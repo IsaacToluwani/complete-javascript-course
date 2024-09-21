@@ -24,27 +24,28 @@
 // Generate Random Number
 
 const ranNumber = Math.floor(Math.random() * 20 + 1);
+let score = 20;
 console.log(typeof ranNumber, ranNumber);
 
 // Take input from User
 
 document.querySelector('.check').addEventListener('click', function () {
-  let userInput = Number (document.querySelector('.guess').value);
+  let userInput = Number(document.querySelector('.guess').value);
   console.log(typeof userInput, userInput);
-  
+
   if (!userInput) {
     document.querySelector('.message').textContent = 'Wrong Number';
-  } else if (userInput === ranNumber) {
-    document.querySelector('.message').textContent = 'Correct Number';
   } else if (userInput > ranNumber) {
     document.querySelector('.message').textContent = 'Too High';
-    let cScore = (Number (document.querySelector('.score').textContent)) - 1;
+    let cScore = Number(document.querySelector('.score').textContent) - 1;
     document.querySelector('.score').textContent = cScore;
   } else if (userInput < ranNumber) {
     document.querySelector('.message').textContent = 'Too Low';
-    let cScore = (Number (document.querySelector('.score').textContent)) - 1;
+    let cScore = Number(document.querySelector('.score').textContent) - 1;
     document.querySelector('.score').textContent = cScore;
+  } else if (userInput === ranNumber) {
+    document.querySelector('.message').textContent = 'Correct Number';
+    let cScore = Number(document.querySelector('.score').textContent);
+    document.querySelector('.highscore').textContent = cScore;
   }
 });
-
-let cScore = (document.querySelector('score').value) - 1;
